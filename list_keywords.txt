@@ -1,1 +1,18 @@
-
+linear code
+hamming metric
+coding theory
+block codes
+linear codes
+lee metric
+macwilliams identity
+error-correction
+cyclic codes
+codes over rings
+rank-metric codes
+poset metric
+poset metrics
+algebraic geometry codes
+AG codes
+weight enumerator
+rank-metric code
+additive code
