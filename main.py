@@ -122,7 +122,7 @@ def curator():
   with open('list_keywords.txt', 'r') as f:
     list_keywords = [line.rstrip('\n') for line in f] 
   
-  regstr = '|'.join(list_keybords)
+  regstr = '|'.join(list_keywords)
   df=df[df['abstract'].str.lower().str.contains(regstr)]
   df.drop_duplicates(inplace=True)
   return df
