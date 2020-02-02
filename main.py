@@ -127,7 +127,7 @@ def curator():
   df.drop_duplicates(inplace=True)
   return df
 
-def render_latex(title,formula,name, fontsize=12, dpi=300, format_='svg'):
+def render_latex(title,formula,authors,name, fontsize=12, dpi=300, format_='svg'):
     """Renders LaTeX formula into image.
     """
     fig = plt.figure(figsize=(8, 5))
@@ -136,8 +136,9 @@ def render_latex(title,formula,name, fontsize=12, dpi=300, format_='svg'):
     ax.autoscale(True)
     fig.dpi=dpi
     n=title.count('\n')
-    fig.text(0.5,0.86,u'{}'.format(title), fontsize=fontsize+6, weight='bold', horizontalalignment='center',verticalalignment='bottom')
-    fig.text(0.5,0.8, u'{}'.format(formula), fontsize=fontsize,horizontalalignment='center',verticalalignment='top')
+    fig.text(0.5,0.86,u'{}'.format(title), fontsize=fontsize+8, weight='bold', horizontalalignment='center',verticalalignment='bottom')
+    fig.text(0.5,0.84, u'{}'.format(authors.upper()), fontsize=fontsize,fontstyle='italic',horizontalalignment='center',verticalalignment='top')
+    fig.text(0.5,0.78, u'{}'.format(formula), fontsize=fontsize,horizontalalignment='center',verticalalignment='top')
     fig.savefig('abstract{}.png'.format(name), dpi=fig.dpi, transparent=False, format=format_)
     plt.close(fig)
     return 'abstract{}.png'.format(name)
@@ -150,7 +151,7 @@ def tweet_daily():
   for index, row in df.iterrows():
     try:
         img=render_latex(title=row['title'],
-            formula=row['abstract'],name=index,
+            formula=row['abstract'],authors=row['authors'],name=index,
             fontsize=10, dpi=300, format_='png')
         api.update_with_media(img, status='𝗧𝗶𝘁𝗹𝗲: ' + row['title'].replace('\n ','') + '.\n' + '𝗔𝘂𝘁𝗵𝗼𝗿𝘀: ' + row['authors'] + '.\n' + 'https://arxiv.org/abs/'+ row['id'])
         os.remove(img)
