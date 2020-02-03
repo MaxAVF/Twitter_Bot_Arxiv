@@ -6,6 +6,7 @@ linear codes
 lee metric
 macwilliams identity
 error-correction
+error correcting
 cyclic codes
 codes over rings
 rank-metric codes
@@ -16,3 +17,5 @@ AG codes
 weight enumerator
 rank-metric code
 additive code
+group code
+propelinear
