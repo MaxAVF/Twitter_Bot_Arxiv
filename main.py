@@ -73,7 +73,7 @@ def harvest(arxiv_set="math",date='2020-01-10'):
 
                 for author in authors.findall(ARXIV + 'author'):
                      try: 
-                      fullname= author.find(ARXIV + 'keyname').text + ' ' + author.find(ARXIV + 'forenames').text
+                      fullname= author.find(ARXIV + 'forenames').text + ' ' + author.find(ARXIV + 'keyname').text
                      except:
                       try: 
                        fullname=author.find(ARXIV + 'forenames').text
