@@ -14,6 +14,8 @@ import numpy as np
 from apscheduler.schedulers.blocking import BlockingScheduler
 from datetime import date,timedelta
 
+import textwrap
+
 plt.style.use('seaborn')
 
 # credentials to login to twitter api
@@ -136,7 +138,7 @@ def render_latex(title,formula,authors,name, fontsize=12, dpi=300, format_='svg'
     ax.autoscale(True)
     fig.dpi=dpi
     n=title.count('\n')
-    fig.text(0.5,0.86,u'{}'.format(title), fontsize=fontsize+8, weight='bold', horizontalalignment='center',verticalalignment='bottom')
+    fig.text(0.5,0.86,u'{}'.format(textwrap.wrap(title.rstrip('\n'))), fontsize=fontsize+8, weight='bold', horizontalalignment='center',verticalalignment='bottom')
     fig.text(0.5,0.84, u'{}'.format(authors.upper()), fontsize=fontsize,fontstyle='italic',horizontalalignment='center',verticalalignment='top')
     fig.text(0.5,0.78, u'{}'.format(formula), fontsize=fontsize,horizontalalignment='center',verticalalignment='top')
     fig.savefig('abstract{}.png'.format(name), dpi=fig.dpi, transparent=False, format=format_)
