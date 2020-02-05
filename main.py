@@ -130,7 +130,7 @@ def curator():
 def render_latex(title,formula,authors,name, fontsize=12, dpi=300, format_='svg'):
     """Renders LaTeX formula into image.
     """
-    fig = plt.figure(figsize=(8, 5))
+    fig = plt.figure(figsize=(10, 5))
     ax = fig.add_axes([0,0,1,1])
     ax.grid(False)
     ax.autoscale(True)
