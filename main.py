@@ -132,7 +132,7 @@ def curator():
 def render_latex(title,formula,authors,name, fontsize=12, dpi=300, format_='svg'):
     """Renders LaTeX formula into image.
     """
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(9, 4))
     ax = fig.add_axes([0,0,1,1])
     ax.grid(False)
     ax.autoscale(True)
@@ -140,7 +140,8 @@ def render_latex(title,formula,authors,name, fontsize=12, dpi=300, format_='svg'
     fig.text(0.5,0.86,u'{}'.format('\n'.join(textwrap.wrap(title.rstrip('\n'),break_long_words=False, replace_whitespace=False))), fontsize=fontsize+8, weight='bold', \
              horizontalalignment='center',verticalalignment='bottom')
     fig.text(0.5,0.84, u'{}'.format(authors.upper()), fontsize=fontsize,fontstyle='italic',horizontalalignment='center',verticalalignment='top')
-    fig.text(0.5,0.78, u'{}'.format(formula), fontsize=fontsize,horizontalalignment='center',verticalalignment='top')
+    fig.text(0.5,0.78, u'{}'.format('\n'.join(textwrap.wrap(formula.rstrip('\n'),break_long_words=False, replace_whitespace=False))), \
+             fontsize=fontsize,horizontalalignment='center',verticalalignment='top')
     fig.savefig('abstract{}.png'.format(name), dpi=fig.dpi, transparent=False, format=format_)
     plt.close(fig)
     return 'abstract{}.png'.format(name)
