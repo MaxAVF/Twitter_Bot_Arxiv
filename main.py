@@ -129,6 +129,15 @@ def curator():
   df.drop_duplicates(inplace=True)
   return df
 
+
+def latex_curator(text):
+    text=text.replace('\n','')
+    pattern = re.compile('\$(.*?)[\$]')
+    math_mode = re.findall(pattern, text)
+    for formula in math_mode:
+       text=text.replace(formula,formula.replace(' ', ''))
+    return text
+
 def render_latex(title,formula,authors,name, fontsize=12, dpi=300, format_='svg'):
     """Renders LaTeX formula into image.
     """
@@ -137,10 +146,10 @@ def render_latex(title,formula,authors,name, fontsize=12, dpi=300, format_='svg'
     ax.grid(False)
     ax.autoscale(True)
     fig.dpi=dpi
-    fig.text(0.5,0.86,u'{}'.format('\n'.join(textwrap.wrap(title.replace('\n', ' '),break_long_words=False, replace_whitespace=False))), fontsize=fontsize+8, weight='bold', \
+    fig.text(0.5,0.86,u'{}'.format('\n'.join(textwrap.wrap(latex_curator(title),width=60,break_long_words=False, replace_whitespace=False))), fontsize=fontsize+8, weight='bold', \
              horizontalalignment='center',verticalalignment='bottom')
     fig.text(0.5,0.84, u'{}'.format('\n'.join(textwrap.wrap(authors.upper().replace('\n', ' '),break_long_words=False, replace_whitespace=False))), fontsize=fontsize,fontstyle='italic',horizontalalignment='center',verticalalignment='top')
-    fig.text(0.5,0.75, u'{}'.format('\n'.join(textwrap.wrap(formula.replace('\n', ' '),width=100,break_long_words=False, replace_whitespace=False))), \
+    fig.text(0.5,0.75, u'{}'.format('\n'.join(textwrap.wrap(latex_curator(formula),width=100,break_long_words=False, replace_whitespace=False))), \
              fontsize=fontsize,horizontalalignment='center',verticalalignment='top')
     fig.savefig('abstract{}.png'.format(name), dpi=fig.dpi, transparent=False, format=format_)
     plt.close(fig)
