@@ -7,6 +7,7 @@ from collections import Counter, defaultdict
 import xml.etree.ElementTree as ET
 import urllib.error,urllib.request
 import pyparsing
+import re
 
 import matplotlib.pylab as plt
 import pandas as pd
