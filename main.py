@@ -164,7 +164,7 @@ def tweet_daily():
             pass
         else:
             raise error
-    except ParseFatalException:
+    except:
         pass
     
                              
