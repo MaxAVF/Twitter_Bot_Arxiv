@@ -3,6 +3,7 @@
 [![Twitter](https://img.shields.io/twitter/url?label=%40arXiv_CT&style=social&url=https%3A%2F%2Ftwitter.com%2FarXiv_CT)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FMaxAVF%2FTwitter_Bot_Arxiv)
 
 Daily tweets of abstracts of papers submitted to http://arxiv.org. 
+Create your own Twitter bot.
 
 ## Prerequisites
 
