@@ -12,7 +12,7 @@ import re
 import matplotlib.pylab as plt
 import pandas as pd
 import numpy as np
-#from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 from datetime import date,timedelta
 
 import textwrap
@@ -179,7 +179,6 @@ def tweet_daily():
     
                              
 if __name__ == "__main__": 
-   tweet_daily()
-   #scheduler = BlockingScheduler()
-   #scheduler.add_job(tweet_daily, 'interval',hours=24,next_run_time=datetime.datetime.now())
-   #scheduler.start()
+   scheduler = BlockingScheduler()
+   scheduler.add_job(tweet_daily, 'interval',hours=48,next_run_time=datetime.datetime.now())
+   scheduler.start()
