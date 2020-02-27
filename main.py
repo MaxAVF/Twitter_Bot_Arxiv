@@ -133,6 +133,7 @@ def curator():
 
 def latex_curator(text):
     text=text.replace('\n',' ')
+    text=re.sub(' {2,}',' ',text)
     pattern = re.compile('\$(.*?)[\$]')
     math_mode = re.findall(pattern, text)
     for formula in math_mode:
